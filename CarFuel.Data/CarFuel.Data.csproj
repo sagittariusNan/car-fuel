@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="CarFuelDb.cs" />
     <Compile Include="CarRepository.cs" />
+    <Compile Include="MemberRepository.cs" />
     <Compile Include="Migrations\201706130914217_InitialCreate.cs" />
     <Compile Include="Migrations\201706130914217_InitialCreate.Designer.cs">
       <DependentUpon>201706130914217_InitialCreate.cs</DependentUpon>
@@ -58,6 +59,7 @@
       <DependentUpon>201706140416415_Update Car.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PlanRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
