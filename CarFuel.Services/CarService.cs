@@ -6,42 +6,38 @@ using System.Collections.Generic;
 
 namespace CarFuel.Services
 {
-    public class CarService
+    public class CarService : ServiceBase<Car>, ICarService
     {
+        private readonly IMemberService memberService;
 
-        private CarRepository carRepo = new CarRepository();
-
-        public IEnumerable<Car> GetAll()
+        public CarService(IRepository<Car> baseRepo,
+            IMemberService memberService) : base(baseRepo)
         {
-            return carRepo.Query(c => true);
+            this.memberService = memberService;
         }
 
-        public IEnumerable<Car> Get(Func<Car, bool> condition)
+        // Member can get only his or her cars.
+        public override IQueryable<Car> Query(Func<Car, bool> criteria)
         {
-            return carRepo.Query(condition);
+            return base.Query(criteria)
+                       .Where(c => c.OwnerId == memberService.CurrentMember.Id);
         }
 
-        public Car Find(params object[] keys)
+        public override Car Find(params object[] keys)
         {
             Guid id = (Guid)keys[0];
-            return carRepo.Query(c => c.Id == id).SingleOrDefault();
+            return Query(c => c.Id == id).SingleOrDefault();
         }
 
-        public void Add(Car item)
+
+        public FillUp AddFillUp(Guid Id, FillUp item)
         {
-            carRepo.Add(item);
+            Car c = Find(Id);
+            FillUp f = c.AddFillUp(item.Odometer, item.Liters, item.IsFull);
+            SaveChanges();
+
+            return f;
         }
 
-        public void AddFillUp(Guid Id, FillUp item)
-        {
-            Car c = carRepo.Find(Id);
-            c.AddFillUp(item.Odometer, item.Liters,item.IsFull);
-            carRepo.SaveChanges();
-        }
-
-        public void SaveChanges()
-        {
-            carRepo.SaveChanges();
-        }
     }
 }

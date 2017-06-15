@@ -4,26 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace CarFuel.Data
 {
-    public class MemberRepository
+    public class MemberRepository : RepositoryBase<Member>
     {
-        private CarFuelDb db = new CarFuelDb();
-
-        public IQueryable<Member> Query(Func<Member, bool> condition)
+        public MemberRepository(DbContext context) : base(context)
         {
-            return db.Members.Where(condition).AsQueryable();
-        }
-
-        public void Add(Member item)
-        {
-            db.Members.Add(item);
-        }
-
-        public void SaveChanges()
-        {
-            db.SaveChanges();
         }
     }
 }

@@ -8,59 +8,41 @@ using System.Threading.Tasks;
 
 namespace CarFuel.Services
 {
-    public class MemberService
+    public class MemberService : ServiceBase<Member>, IMemberService
     {
-        private MemberRepository memberRepo = new MemberRepository();
+        public MemberService(IRepository<Member> baseRepo) : base(baseRepo)
+        {
+        }
 
-        public Member CurrentUser { get; private set; }
+        public Member CurrentMember { get; private set; }
 
-        public bool SetCurrentUser(string userId)
+        public bool SetCurrentMember(string userId)
         {
             var member = Find(userId);
 
             if (member != null)
             {
-                CurrentUser = member;
+                CurrentMember = member;
                 return true;
             }
             else
             {
-                CurrentUser = null;
+                CurrentMember = null;
                 return false;
             }
         }
 
         public void CreateMember(string userId, string name, string email)
         {
-            memberRepo.Add(new Member() { Id = userId, Name = name, Email = email, PlanCode = "FREE" });
-            memberRepo.SaveChanges();
+            Add(new Member() { Id = userId, Name = name, Email = email, PlanCode = "FREE" });
+            SaveChanges();
         }
 
-        public IEnumerable<Member> GetAll()
-        {
-            return memberRepo.Query(m => true);
-        }
-
-        public IEnumerable<Member> Get(Func<Member, bool> condition)
-        {
-            return memberRepo.Query(condition);
-        }
-
-        public Member Find(params object[] keys)
+        public override Member Find(params object[] keys)
         {
             string id = (string)keys[0];
-            return memberRepo.Query(c => c.Id == id).SingleOrDefault();
+            return Query(c => c.Id == id).SingleOrDefault();
         }
 
-        public void Add(Member item)
-        {
-            memberRepo.Add(item);
-        }
-
-
-        public void SaveChanges()
-        {
-            memberRepo.SaveChanges();
-        }
     }
 }
