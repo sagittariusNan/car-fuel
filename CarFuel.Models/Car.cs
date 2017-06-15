@@ -81,9 +81,9 @@ namespace CarFuel.Models
                 {
                     foreach (var f in FillUps.OrderBy(x=>x.Id))
                     {
-                        if (f.NexFillUp != null)
+                        if (f.NextFillUp != null)
                         {
-                            odmeter = f.NexFillUp.Odometer - f.Odometer;
+                            odmeter = f.NextFillUp.Odometer - f.Odometer;
                             totalOdmeter += odmeter;
                             area += odmeter * f.KilometersPerLiter;
                         }

@@ -30,7 +30,7 @@ namespace CarFuel.Models.Facts {
             FillUp f2 = new FillUp();
             f2.Odometer = 1500;
             f2.Liters = 50;
-            f1.NexFillUp = f2;
+            f1.NextFillUp = f2;
 
             //act
             double? result = f1.KilometersPerLiter;
@@ -50,13 +50,13 @@ namespace CarFuel.Models.Facts {
             f2.Odometer = 1500;
             f2.Liters = 50;
 
-            f1.NexFillUp = f2;
+            f1.NextFillUp = f2;
 
             FillUp f3 = new FillUp();
             f3.Odometer = 2100;
             f3.Liters = 50;
 
-            f2.NexFillUp = f3;
+            f2.NextFillUp = f3;
 
             //act
             double? result = f2.KilometersPerLiter;
