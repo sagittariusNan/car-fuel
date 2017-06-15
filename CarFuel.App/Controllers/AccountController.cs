@@ -85,9 +85,10 @@ namespace CarFuel.App.Controllers
             {
                 case SignInStatus.Success:
                     {
-                        if (!memberService.SetCurrentUser(User.Identity.GetUserId()))
+                        var user = UserManager.FindByEmail(model.Email);
+                        if (!memberService.SetCurrentUser(user.Id))
                         {
-                            memberService.CreateMember(User.Identity.GetUserId(), User.Identity.Name, User.Identity.Name);
+                            memberService.CreateMember(userId: user.Id, name: model.Email, email: model.Email);
                         }
                         return RedirectToLocal(returnUrl);
                     }
@@ -168,7 +169,7 @@ namespace CarFuel.App.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    memberService.CreateMember(User.Identity.GetUserId(), model.Email, model.Email);
+                    memberService.CreateMember(userId: UserManager.FindByEmail(model.Email).Id, name: model.Email, email: model.Email);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -405,6 +406,9 @@ namespace CarFuel.App.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            memberService.SetCurrentUser(string.Empty);
+
             return RedirectToAction("Index", "Home");
         }
 

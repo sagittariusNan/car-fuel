@@ -10,7 +10,7 @@ namespace CarFuel.Models
 {
     public class Car
     {
-
+        
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 

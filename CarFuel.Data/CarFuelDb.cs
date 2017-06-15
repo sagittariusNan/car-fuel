@@ -9,5 +9,6 @@ namespace CarFuel.Data
         public DbSet<Car> Cars { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<Plan> Plans { get; set; }
+
     }
 }

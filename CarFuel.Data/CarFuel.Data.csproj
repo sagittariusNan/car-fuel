@@ -58,6 +58,14 @@
     <Compile Include="Migrations\201706140416415_Update Car.Designer.cs">
       <DependentUpon>201706140416415_Update Car.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706150421401_AddMemberShip.cs" />
+    <Compile Include="Migrations\201706150421401_AddMemberShip.Designer.cs">
+      <DependentUpon>201706150421401_AddMemberShip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706150454438_UpdateMemberShip.cs" />
+    <Compile Include="Migrations\201706150454438_UpdateMemberShip.Designer.cs">
+      <DependentUpon>201706150454438_UpdateMemberShip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlanRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +86,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706140416415_Update Car.resx">
       <DependentUpon>201706140416415_Update Car.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706150421401_AddMemberShip.resx">
+      <DependentUpon>201706150421401_AddMemberShip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706150454438_UpdateMemberShip.resx">
+      <DependentUpon>201706150454438_UpdateMemberShip.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

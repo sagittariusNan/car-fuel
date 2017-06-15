@@ -14,9 +14,9 @@ namespace CarFuel.Services
 
         public Member CurrentUser { get; private set; }
 
-        public bool SetCurrentUser(string UserId)
+        public bool SetCurrentUser(string userId)
         {
-            var member = Find(UserId);
+            var member = Find(userId);
 
             if (member != null)
             {
@@ -30,9 +30,9 @@ namespace CarFuel.Services
             }
         }
 
-        public void CreateMember(string Id, string Name, string Email)
+        public void CreateMember(string userId, string name, string email)
         {
-            memberRepo.Add(new Member() { Id = Id, Name = Name, Email = Email, PlanCode = "FREE" });
+            memberRepo.Add(new Member() { Id = userId, Name = name, Email = email, PlanCode = "FREE" });
             memberRepo.SaveChanges();
         }
 
