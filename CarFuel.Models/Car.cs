@@ -48,5 +48,32 @@ namespace CarFuel.Models
             FillUps = new HashSet<FillUp>();
         }
 
+        public double? AverageKilometersPerLiter
+        {
+            get
+            {
+                double? area = 0.0;
+                int odmeter = 0;
+                int totalOdmeter = 0;
+
+                if (FillUps.Count() <= 1)
+                {
+                    return null;
+                }
+                else
+                {
+                    foreach (var f in FillUps.OrderBy(x=>x.Id))
+                    {
+                        if (f.NexFillUp != null)
+                        {
+                            odmeter = f.NexFillUp.Odometer - f.Odometer;
+                            totalOdmeter += odmeter;
+                            area += odmeter * f.KilometersPerLiter;
+                        }
+                    }
+                    return Math.Round(area.Value/totalOdmeter,2);
+                }
+            }
+        }
     }
 }

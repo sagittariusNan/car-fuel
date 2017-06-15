@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarFact.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="FillUpFact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
