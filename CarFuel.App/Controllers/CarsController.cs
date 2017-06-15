@@ -48,5 +48,24 @@ namespace CarFuel.App.Controllers
             return View(item);
         }
 
+        public ActionResult AddFillUp()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddFillUp(Guid Id, FillUp item)
+        {
+            if (ModelState.IsValid)
+            {
+                carService.AddFillUp(Id, item);
+                carService.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
+            return View(item);
+        }
+
     }
 }

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using CarFuel.Models;
+using System.Threading.Tasks; 
+using CarFuel.Models; 
 using Xunit;
 
 namespace CarFuel.Models.Facts
 {
     public class CarFact
-    {
+    { 
         public class AvgFillUp
         {
             [Fact]
@@ -80,7 +80,7 @@ namespace CarFuel.Models.Facts
 
                 //assert
                 Assert.Equal(11.09, result);
-            }
+            } 
         }
     }
 }

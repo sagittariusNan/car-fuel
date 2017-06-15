@@ -10,7 +10,7 @@ namespace CarFuel.Models
 {
     public class Car
     {
-
+        
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
@@ -35,6 +35,23 @@ namespace CarFuel.Models
         [Display(Name = "Engine Size (cc.)")]
         [Range(0, 9999)]
         public int? EngineSizeCC { get; set; }
+
+        public FillUp AddFillUp(int odometer, double liters, bool isFull = true)
+        {
+            var f = new FillUp();
+            f.Odometer = odometer;
+            f.Liters = liters;
+            f.IsFull = isFull;
+            f.NextFillUp = null;
+
+            if (FillUps.Count > 0)
+            {
+                FillUps.Last().NextFillUp = f;
+            }
+
+            FillUps.Add(f);
+            return f;
+        }
 
         public DateTime DateAdded { get; set; }
 

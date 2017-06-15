@@ -56,8 +56,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Car.cs" />
-    <Compile Include="Fillup.cs" />
+    <Compile Include="Car.cs" /> 
+    <Compile Include="Fillup.cs" /> 
+    <Compile Include="Member.cs" />
+    <Compile Include="Plan.cs" />  
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
