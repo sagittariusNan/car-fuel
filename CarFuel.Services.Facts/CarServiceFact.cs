@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CarFuel.Services.Facts {
-  public class Class1 {
+  public class CarServiceFact {
+        public class AddFillUp
+        {
+
+        }
   }
 }

@@ -10,7 +10,7 @@ namespace CarFuel.Models {
         public int Odometer { get; set; }
         public double Liters { get; set; }
         public bool IsFull { get; set; }
-
+ 
         public double? KilometersPerLiter {
             get {
                 if (NexFillUp == null) {
@@ -18,8 +18,7 @@ namespace CarFuel.Models {
                 }
                 else {
                     return (this.NexFillUp.Odometer - this.Odometer) / NexFillUp.Liters;
-                }
-
+                } 
             }
         }
 
