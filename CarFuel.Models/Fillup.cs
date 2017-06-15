@@ -15,11 +15,12 @@ namespace CarFuel.Models
 
         public double? KilometersPerLiter
         {
-            get {
+            get
+            {
                 return 0;
             }
         }
-
+        public FillUp NextFillUp { get; set; }
         public virtual Car Car { get; set; }
     }
 }
