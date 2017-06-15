@@ -54,20 +54,21 @@
       <HintPath>..\packages\xunit.extensibility.execution.2.2.0\lib\net452\xunit.execution.desktop.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup> 
     <Compile Include="CarFact.cs" />
+    <Compile Include="FillUpFact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+  <ItemGroup> 
     <ProjectReference Include="..\CarFuel.Models\CarFuel.Models.csproj">
       <Project>{193bcfa3-05e9-419e-8073-f2a483577da3}</Project>
       <Name>CarFuel.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup> 
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup> 
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

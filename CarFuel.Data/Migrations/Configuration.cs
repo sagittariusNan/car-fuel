@@ -27,6 +27,11 @@ namespace CarFuel.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.Plans.AddOrUpdate(p => p.Code,
+                new Models.Plan { Code = "FREE", Name = "Free Plan" }
+            );
+            context.SaveChanges();
         }
     }
 }

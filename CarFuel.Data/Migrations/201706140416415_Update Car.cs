@@ -8,7 +8,7 @@ namespace CarFuel.Data.Migrations
         public override void Up()
         {
             DropPrimaryKey("dbo.Cars");
-            AlterColumn("dbo.Cars", "Id", c => c.Guid(nullable: false, identity: true));
+            AlterColumn("dbo.Cars", "Id", c => c.Guid(nullable: false, identity: true, defaultValueSql:"newid()"));
             AlterColumn("dbo.Cars", "Name", c => c.String(maxLength: 20));
             AlterColumn("dbo.Cars", "PlateNo", c => c.String(maxLength: 20));
             AlterColumn("dbo.Cars", "Make", c => c.String(nullable: false, maxLength: 30));
