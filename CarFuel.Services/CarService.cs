@@ -3,6 +3,7 @@ using CarFuel.Models;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using CarFuel.Utilities;
 
 namespace CarFuel.Services
 {
@@ -16,11 +17,11 @@ namespace CarFuel.Services
             this.memberService = memberService;
         }
 
-        // Member can get only his or her cars.
-        public override IQueryable<Car> Query(Func<Car, bool> criteria)
+        public override Car Add(Car item)
         {
-            return base.Query(criteria)
-                       .Where(c => c.OwnerId == memberService.CurrentMember.Id);
+            item.OwnerId = memberService.CurrentMember.Id;
+            item.DateAdded = SystemTime.Now();
+            return base.Add(item);
         }
 
         public override Car Find(params object[] keys)
@@ -29,6 +30,12 @@ namespace CarFuel.Services
             return Query(c => c.Id == id).SingleOrDefault();
         }
 
+        // Member can get only his or her cars.
+        public override IQueryable<Car> Query(Func<Car, bool> criteria)
+        {
+            return base.Query(criteria)
+                       .Where(c => c.OwnerId == memberService.CurrentMember.Id);
+        } 
 
         public FillUp AddFillUp(Guid Id, FillUp item)
         {

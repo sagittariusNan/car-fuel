@@ -5,19 +5,24 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System.Web.Mvc.Filters;
+using CarFuel.App.Filters;
 
 namespace CarFuel.App.Controllers
 {
-
     [Authorize]
-    public class CarsController : Controller
+    public class CarsController : AppControllerBase
     {
+        private readonly ICarService carService;
 
-        private CarService carService = new CarService();
+        public CarsController(ICarService carService, IMemberService m) : base(m)
+        {
+            this.carService = carService; 
+        }
 
         public ActionResult Index()
         {
-            IEnumerable<Car> cars = carService.GetAll();
+            IEnumerable<Car> cars = carService.All();
 
             return View(cars);
         }
@@ -36,7 +41,7 @@ namespace CarFuel.App.Controllers
             if (ModelState.IsValid)
             {
 
-                item.OwnerId = User.Identity.GetUserId();
+                //item.OwnerId = User.Identity.GetUserId();
                 item.DateAdded = DateTime.Now;
 
                 carService.Add(item);

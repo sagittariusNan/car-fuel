@@ -1,29 +1,12 @@
 ﻿using CarFuel.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace CarFuel.Data
 {
-    public class PlanRepository
+    public class PlanRepository : RepositoryBase<Plan>
     {
-        private CarFuelDb db = new CarFuelDb();
-
-        public IQueryable<Plan> Query(Func<Plan, bool> condition)
+        public PlanRepository(DbContext context) : base(context)
         {
-            return db.Plans.Where(condition).AsQueryable();
-        }
-
-        public void Add(Plan item)
-        {
-            db.Plans.Add(item);
-        }
-
-        public void SaveChanges()
-        {
-            db.SaveChanges();
         }
     }
 }

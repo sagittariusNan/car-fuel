@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201706150454438_UpdateMemberShip.Designer.cs">
       <DependentUpon>201706150454438_UpdateMemberShip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706160326403_update1.cs" />
+    <Compile Include="Migrations\201706160326403_update1.Designer.cs">
+      <DependentUpon>201706160326403_update1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlanRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706150454438_UpdateMemberShip.resx">
       <DependentUpon>201706150454438_UpdateMemberShip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706160326403_update1.resx">
+      <DependentUpon>201706160326403_update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -17,19 +17,23 @@ namespace CarFuel.App.Controllers
     public class AccountController : Controller
     {
 
-        private MemberService memberService = new MemberService();
+        private IMemberService memberService;
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public AccountController(IMemberService memberService)
         {
+            this.memberService = memberService;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, 
+                                 ApplicationSignInManager signInManager,
+                                 IMemberService memberService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            this.memberService = memberService;
         }
 
         public ApplicationSignInManager SignInManager
@@ -86,7 +90,7 @@ namespace CarFuel.App.Controllers
                 case SignInStatus.Success:
                     {
                         var user = UserManager.FindByEmail(model.Email);
-                        if (!memberService.SetCurrentUser(user.Id))
+                        if (!memberService.SetCurrentMember(user.Id))
                         {
                             memberService.CreateMember(userId: user.Id, name: model.Email, email: model.Email);
                         }
@@ -407,7 +411,7 @@ namespace CarFuel.App.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 
-            memberService.SetCurrentUser(string.Empty);
+            memberService.SetCurrentMember(string.Empty);
 
             return RedirectToAction("Index", "Home");
         }

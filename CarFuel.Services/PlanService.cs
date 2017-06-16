@@ -8,28 +8,18 @@ using System.Threading.Tasks;
 
 namespace CarFuel.Services
 {
-    public class PlanService
+    public class PlanService : ServiceBase<Plan>, IPlanService
     {
-        private PlanRepository planRepo = new PlanRepository();
-
-        public IEnumerable<Plan> GetAll()
+        public PlanService(IRepository<Plan> baseRepo) : base(baseRepo)
         {
-            return planRepo.Query(p => true);
         }
 
-        public IEnumerable<Plan> Get(Func<Plan, bool> condition)
+        public override Plan Find(params object[] keys)
         {
-            return planRepo.Query(condition);
+            string id = (string)keys[0];
+            return Query(c => c.Code == id).SingleOrDefault();
         }
 
-        public void Add(Plan item)
-        {
-            planRepo.Add(item);
-        }
 
-        public void SaveChanges()
-        {
-            planRepo.SaveChanges();
-        }
     }
 }

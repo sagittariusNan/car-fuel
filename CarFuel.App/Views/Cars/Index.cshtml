@@ -3,6 +3,9 @@
 
 <h2>My Cars</h2>
 
+<div class="well well-sm">
+  <span id="total">@Model.Count()</span> Cars!
+</div>
 
 <div class="row">
   @foreach (var c in Model) {
@@ -10,7 +13,7 @@
       <img src="~/Images/car.png"
            class="img-thumbnail img-responsive" />
       <div class="text-center">
-        <b>@c.Name</b>
+        <b class="car-name">@c.Name</b>
       </div>
     </div>
   }

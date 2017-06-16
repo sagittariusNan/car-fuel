@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFuel.Models.Facts", "Car
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFuel.Services.Facts", "CarFuel.Services.Facts\CarFuel.Services.Facts.csproj", "{86DC1085-8083-42AF-AD3E-EE60B03A9F87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFuel.Utilities", "CarFuel.Utilities\CarFuel.Utilities.csproj", "{8F52EB25-E8BE-45BD-BE1C-F884AB735077}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CarFuel.UITests", "CarFuel.UITests\CarFuel.UITests.fsproj", "{6F210139-6ACD-480A-AACA-CABEABFD2360}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{86DC1085-8083-42AF-AD3E-EE60B03A9F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86DC1085-8083-42AF-AD3E-EE60B03A9F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86DC1085-8083-42AF-AD3E-EE60B03A9F87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F52EB25-E8BE-45BD-BE1C-F884AB735077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F52EB25-E8BE-45BD-BE1C-F884AB735077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F52EB25-E8BE-45BD-BE1C-F884AB735077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F52EB25-E8BE-45BD-BE1C-F884AB735077}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F210139-6ACD-480A-AACA-CABEABFD2360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F210139-6ACD-480A-AACA-CABEABFD2360}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F210139-6ACD-480A-AACA-CABEABFD2360}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F210139-6ACD-480A-AACA-CABEABFD2360}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
