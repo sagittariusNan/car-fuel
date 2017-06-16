@@ -1,5 +1,7 @@
 # car-fuel
 
+[![Build status](https://ci.appveyor.com/api/projects/status/om42v2ka2wpj6dh8?svg=true)](https://ci.appveyor.com/project/surrealist/car-fuel)
+
 TDD Car Fuel
 
 ## Actors
